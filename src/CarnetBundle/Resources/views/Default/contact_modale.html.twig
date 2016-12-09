@@ -1,0 +1,83 @@
+{% for contact in contacts %}
+    <div id="modale_{{contact.id}}" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{contact.prenom}} {{contact.nom|upper}}</h4>
+          </div>
+          <div class="modal-body">
+          <div class='row'>
+            <div class="col-md-4">
+                <a href="#" class="thumbnail">
+                  <img src="../img/ghost.png" style='height:150px;width:150px'>
+                </a>
+                <div class="btn-group">
+                  <button data-toggle="dropdown" class="btn dropdown-toggle"  data-placeholder="Please select">Ajouter à la liste <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><input id="list_111_fav" type="checkbox" onchange="add_to_list('fav','111')" ><label for="list_111_fav" name="NAME" value="VALUE">Favoris</label></li>
+                      <li><input type="checkbox" id="ID1"><label for="ID1" name="NAME" value="VALUE">Liste 1</label></li>
+                      <li><input type="checkbox" id="ID2"><label for="ID2" name="NAME" value="VALUE">Liste 2</label></li>
+                      <li><input type="checkbox" id="ID3"><label for="ID3" name="NAME" value="VALUE">Liste 2</label></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id="contact_full_show_{{contact.id}}_view">
+                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>{{contact.tel}}<br>
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{contact.email}}<br>
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{contact.adresse}}<br>
+                    <hr>
+                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> {{contact.website}}<br>
+
+                </div>
+                <div id="contact_full_edit_{{contact.id}}_view" style="display:none">
+                    <div class="input-group" style="margin-bottom:3px">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                      <input type="text" id="new_prenom_{{contact.id}}" class="form-control" value="{{contact.prenom}}" placeholder="Prenom" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group" style="margin-bottom:3px">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                      <input type="text" id="new_nom_{{contact.id}}" class="form-control" value="{{contact.nom}}" placeholder="Nom" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group" style="margin-bottom:3px">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></span>
+                      <input type="text"id="new_tel_{{contact.id}}" class="form-control" value="{{contact.tel}}" placeholder="Telephone" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group" style="margin-bottom:3px">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+                      <input type="text" id="new_email_{{contact.id}}" class="form-control" value="{{contact.email}}" placeholder="Email" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></span>
+                      <input type="text" id="new_adresse_{{contact.id}}" class="form-control" value="{{contact.adresse}}" placeholder="Adresse" aria-describedby="basic-addon1">
+                    </div>
+                    <hr>
+                    <div class="input-group" style="margin-bottom:2px">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></span>
+                      <input type="text" id="new_website_{{contact.id}}" class="form-control" value="{{contact.website}}" placeholder="Site Web" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group" style="margin-bottom:2px">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+                      <input type="text" id="new_fb_{{contact.id}}" class="form-control" value="{{contact.facebook}}" placeholder="Facebook" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group" style="margin-bottom:2px">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></span>
+                      <input type="text" id="new_twitter_{{contact.id}}" class="form-control" value="{{contact.twitter}}" placeholder="Twitter" aria-describedby="basic-addon1">
+                    </div>
+                    <a href="javascript:switch_view('contact_full_show_{{contact.id}}','contact_full_edit_{{contact.id}}')"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Annuler</a>
+                
+                </div>
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" onclick="remove_contact('{{contact.id}}')" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+            <button type="button" id="contact_full_edit_{{contact.id}}_button" onclick="switch_view('contact_full_edit_{{contact.id}}','contact_full_show_{{contact.id}}')" class="btn btn-primary">Modifier</button>
+            <button type="button" id="contact_full_show_{{contact.id}}_button" onclick="edit_contact('{{contact.id}}')" style="display:none" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}

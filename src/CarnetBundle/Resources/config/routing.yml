@@ -1,0 +1,44 @@
+carnet_homepage:
+    # path:     /hello/{name}
+    # defaults: { _controller: CarnetBundle:Default:index }
+accueil:
+    pattern:    /
+    defaults: {_controller: CarnetBundle:Default:index }  
+
+Contact_Ajouter:
+    path:   /ajouter/
+    defaults: {_controller: CarnetBundle:Default:Ajouter }
+    
+Contact_Supprimer:
+    path:   /supprimer/
+    defaults: {_controller: CarnetBundle:Default:Supprimer}
+    
+Contact_Modifier:
+    path:   /modifier/
+    defaults: {_controller: CarnetBundle:Default:Modifier}
+    
+Contact_Get:
+    path:   /get/
+    defaults: {_controller: CarnetBundle:Default:Get}
+
+   
+
+
+fos_user_security:
+    resource: "@FOSAppBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSAppBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSAppBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSAppBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSAppBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
